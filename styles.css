@@ -38,13 +38,13 @@ header {
   background-color: #e6f6ff;
 }
 .column + .column {margin-left: 20px;}
+.awardcolumn + .awardcolumn {margin-top: 20px;}
 .awardcontainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .awardcolumn {
-  margin: 20px 0 20px 0;
   padding: 0 10px 0 10px;
   background-color: #e6f6ff;
 }
