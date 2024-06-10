@@ -33,11 +33,11 @@ header {
   padding-bottom: 20px;
 }
 .column {
-  margin: 0 10px 0 10px;
   padding: 0 10px 0 10px;
   flex:50%;
   background-color: #e6f6ff;
 }
+.column + .column {margin-left: 20px;}
 .awardcontainer {
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@ h1 {
   color: #1889a9;
   font-weight: bold;
 }
-h2 {
+h3 {
   font-family: Georgia, sans-serif;
   font-size: 1.5em;
   margin-bottom: 10px;
@@ -78,7 +78,12 @@ li {
 a {
   text-decoration: underline;
   color: black;
-  padding: 0 0 0 3px;
+}
+a.navbar {
+  padding-right: 3px;
+}
+#gh {
+  color:#5e5e5e;
 }
 nav a:hover {
   color: red;
