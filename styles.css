@@ -10,6 +10,7 @@ header {
   padding: 20px;
   text-align: center;
 }
+a + a {margin-left: 10px;}
 #name {
   border:2px solid #c5c6c7; 
   border-radius: 25px;
