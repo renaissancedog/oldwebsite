@@ -37,6 +37,7 @@ a + a {margin-left: 10px;}
 }
 .column {
   padding: 0 10px 0 10px;
+  border-radius:25px;
   flex:50%;
   background-color:#1f2823; 
 }
@@ -48,6 +49,7 @@ a + a {margin-left: 10px;}
   justify-content: center;
 }
 .awardcolumn {
+  border-radius: 25px;
   padding: 0 10px 0 10px;
   background-color:#1f2823; 
 }
