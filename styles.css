@@ -1,5 +1,5 @@
 html {
-  background-color: white; 
+  background-color: #0B0C10; 
 }
 body {
   font-family: Verdana, sans-serif;
@@ -11,7 +11,8 @@ header {
   text-align: center;
 }
 #name {
-  border:2px solid black;
+  border:2px solid #c5c6c7; 
+  border-radius: 25px;
   padding:10px;
   max-width: fit-content;
   margin-left: auto;
@@ -19,9 +20,10 @@ header {
 }
 #namelink {
   text-decoration: none;
+  color: #c5c6c7;
 }
 #wrapper {
-  padding-bottom: 10px;
+  color:#c5c6c7;
 }
 .bold {
   font-weight: bold;
@@ -35,7 +37,7 @@ header {
 .column {
   padding: 0 10px 0 10px;
   flex:50%;
-  background-color: #e6f6ff;
+  background-color:#1f2823; 
 }
 .column + .column {margin-left: 20px;}
 .awardcolumn + .awardcolumn {margin-top: 20px;}
@@ -46,7 +48,7 @@ header {
 }
 .awardcolumn {
   padding: 0 10px 0 10px;
-  background-color: #e6f6ff;
+  background-color:#1f2823; 
 }
 main {
   padding-top: 40px;
@@ -56,34 +58,40 @@ main {
 h1 {
   font-family: Georgia, sans-serif;
   font-size: 2em;
-  color: #1889a9;
+  color: #66FCF1; 
+  font-weight: bold;
+}
+h2 {
+  font-family: Georgia, sans-serif;
+  font-size: 2em;
+  color: #66FCF1; 
   font-weight: bold;
 }
 h3 {
   font-family: Georgia, sans-serif;
   font-size: 1.5em;
   margin-bottom: 10px;
-  color: black;
+  color: rgb(210,217,220);
   font-weight: unset;
 }
 p {
   line-height: 1.5;
-  color: #5e5e5e;
+  color: #c5c6c7; 
 }
 li {
-  color:#5e5e5e;
+  color: #c5c6c7;
   margin-bottom: 5px;
   padding-top:5px;
 }
+nav {
+  color: rgb(0,40,60);
+}
 a {
   text-decoration: underline;
-  color: black;
+  color: #c5c6c7;
 }
 a.navbar {
   padding-right: 3px;
-}
-#gh {
-  color:#5e5e5e;
 }
 nav a:hover {
   color: red;
