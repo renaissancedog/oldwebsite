@@ -10,7 +10,9 @@ header {
   padding: 20px;
   text-align: center;
 }
-a + a {margin-left: 10px;}
+a + a {
+  margin-left: 10px;
+}
 #name {
   border:2px solid #c5c6c7; 
   border-radius: 25px;
@@ -41,8 +43,12 @@ a + a {margin-left: 10px;}
   flex:50%;
   background-color:#1f2823; 
 }
-.column + .column {margin-left: 20px;}
-.awardcolumn + .awardcolumn {margin-top: 20px;}
+.column + .column {
+  margin-left: 20px;
+}
+.awardcolumn + .awardcolumn {
+  margin-top: 20px;
+}
 .awardcontainer {
   display: flex;
   flex-direction: column;
