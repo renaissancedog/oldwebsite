@@ -1,36 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>William Liu</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  </head>
-  <body>
-    <main>
-      
-      <script>
-        $(document).ready(function() {
-            $("#nav").load("nav.html");
-        });
-      </script>
-      <div id="nav"></div>
-      <h2>Leadership Positions</h2>
-      <div class="awardcontainer">
-        <div class="awardcolumn">
-          <h3>UIL Mathematics team captain</h3>
-            <p>Leads and coaches the members of our championship-winning team</p>
-        </div>
-        <div class="awardcolumn">
-          <h3>Webmaster, Reagan UIL Team</h3>
-          <p>Maintains team website-check it out <a href="https://reagan-uil.github.io">here</a></p>
-        </div>
-        <div class="awardcolumn">
-          <h3>Co-Founder, Renaissance Dog Walkers</h3>
-          <p>Started and managed a dog-walking business with friends</p>
-        </div>
-      </div>
-    </main>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>William Liu</title>
+  <link rel="stylesheet" href="styles.css">
+  <script crossorigin src="https://unpkg.com/react/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+  <main>
+    <div id="root"></div>
+  </main>
+</body>
+<script src="leadership.js" type="text/babel"></script>
 </html>
