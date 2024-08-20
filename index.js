@@ -33,7 +33,7 @@ function Page() {
       <div class="container">
         <div class="column">
           <h3>My Background</h3>
-          <p>I am a rising sophomore at Ronald Reagan High School in San Antonio, Texas. Welcome to my website!</p>
+          <p>I am a sophomore at Ronald Reagan High School in San Antonio, Texas. Welcome to my website!</p>
         </div>
       </div>
       <div class="container">
