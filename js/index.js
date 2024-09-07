@@ -1,33 +1,6 @@
-function Nav() {
-  return (
-      <div id="nvb">
-      <a href="index.html" id="namelink">
-        <div id="name">
-          <h2 id="wrapper">William Liu</h2>
-        </div>
-      </a>
-      <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="awards.html">Awards</a>
-        <a href="leadership.html">Leadership</a>
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        </link>
-      </nav>
-    </div> 
-  )
-} 
-function Award(title, body) {
-  return (
-    <div class="awardcolumn">
-        <h3>{title}</h3>
-        <p>{body}</p>
-      </div> 
-  ) 
-}
 function Page() {
   return (
     <main>
-      <Nav />
       <h1 id="intro">Hello, World!</h1>
       <h2>About Me</h2> 
       <div class="container">
