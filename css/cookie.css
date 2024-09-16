@@ -24,6 +24,14 @@ a+a {
   margin-left: auto;
   margin-right: auto;
 }
+.navbar {
+  margin-top: 10px;
+}
+#nvb {
+  background-color: #1f2823;
+  padding: 20px;
+  border-radius: 0 0 20px 20px;
+}
 #namelink {
   text-decoration: none;
   color: #c5c6c7;
@@ -32,7 +40,6 @@ a+a {
   color:#c5c6c7;
 }
 main {
-  padding-top: 40px;
   width: 60%;
   margin: 0 auto;
 }
@@ -46,7 +53,7 @@ h1 {
 
 h2 {
   font-family: Georgia, sans-serif;
-  font-size: 20px;
+  font-size: 2em;
   color: #66FCF1;
   font-weight: bold;
 }
@@ -69,35 +76,19 @@ li {
   margin-bottom: 5px;
   padding-top: 5px;
 }
-
 nav {
-  color: rgb(0, 40, 60);
-}
-
-#nav {
-  background-color: #1f2823;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  text-align: center;
-}
-#nvb {
-  background-color: #1f2823;
-  padding: 20px;
-  border-radius: 0 0 20px 20px;
+  color: rgb(0,40,60);
 }
 a {
   text-decoration: underline;
   color: #c5c6c7;
 }
-
 a.navbar {
   padding-right: 3px;
 }
-
 nav a:hover {
   color: red;
 }
-
 footer {
   padding-top: 20px;
   text-align: center;

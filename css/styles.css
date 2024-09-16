@@ -13,6 +13,11 @@ header {
 a + a {
   margin-left: 10px;
 }
+#nvb {
+  background-color: #1f2823;
+  padding: 20px;
+  border-radius: 0 0 20px 20px;
+}
 #name {
   border:2px solid #c5c6c7; 
   border-radius: 25px;
@@ -20,6 +25,9 @@ a + a {
   max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
+}
+.navbar {
+  margin-top: 10px;
 }
 #namelink {
   text-decoration: none;
@@ -72,11 +80,6 @@ h1 {
 #intro {
   font-size: 100px;
   text-align: center;
-}
-#nvb {
-  background-color: #1f2823;
-  padding: 20px;
-  border-radius: 0 0 20px 20px;
 }
 h2 {
   font-family: Georgia, sans-serif;
