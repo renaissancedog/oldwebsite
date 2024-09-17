@@ -67,24 +67,24 @@ main {
   width: 60%;
   margin: 0 auto;
 }
-h1 {
-  font-family: Cambria, serif;
-  font-size: 2em;
-  color: #66FCF1; 
-  font-weight: bold;
-}
 #intro {
   font-size: 100px;
   text-align: center;
 }
+h1 {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+  font-size: 2em;
+  color: #66FCF1; 
+  font-weight: bold;
+}
 h2 {
-  font-family: Georgia, sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif; 
   font-size: 2em;
   color: #66FCF1; 
   font-weight: bold;
 }
 h3 {
-  font-family: Georgia, sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif; 
   font-size: 1.5em;
   margin-bottom: 10px;
   color: rgb(210,217,220);
