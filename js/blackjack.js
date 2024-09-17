@@ -10,6 +10,7 @@ let dealerScore=0
 let dealerAce=0
 let aces=0
 let betamt=10
+let newgame=false
 class Game {
   deal() {
     let c=getRandomInt(0,cards.length)
@@ -61,7 +62,7 @@ class Game {
     playerCards=[]
     dealerCards=[]
     rounds++;
-    if (rounds%5==0) {
+    if (rounds%5==0||newgame) {
       cards=[...allCards]
     }
     q("dealerCard").innerHTML = "Dealer's Cards: "
@@ -84,6 +85,7 @@ class Game {
       alert("Round "+rounds+": You and the dealer both got Blackjack! Your cards were "+playerCards+". Their cards were "+dealerCards)
       this.reset()
     }
+    newgame=false
   }
   stand() {
     while (dealerScore<17) {
@@ -135,6 +137,7 @@ class Game {
 }
 function start() {
   game=new Game()
+  newgame=true
   game.reset()
   rounds=0
 }
