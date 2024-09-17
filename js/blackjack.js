@@ -136,7 +136,7 @@ class Game {
 function start() {
   game=new Game()
   game.reset()
-  game.rounds=0
+  rounds=0
 }
 function getRandomInt(min, max) {
   const minCeiled = Math.ceil(min);
