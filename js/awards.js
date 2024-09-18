@@ -13,9 +13,7 @@ function Page() {
     <div class="container">
     <Award title="AIME Qualifier and top 50% (2023/24)" body="Was top 7% of all AMC 10 test takers"/>
     <Award title="1st Place, AMC 10, Reagan High School (2024)" body="Scored highest on the AMC 10 at Reagan"/>
-    <Award title="AMC 8 Honor Roll (2022, 2023)" body="Was top 5% of all AMC 8 test takers."/>
-    <Award title="MATHCOUNTS Chapter Countdown Round Champion, Written 3rd place, Team 2nd place (2023)" body="Winner of the Bexar Chapter competition"/>
-    <Award title="UIL Mathematics, Number Sense and Calculator Applications Regional Qualifier (2024)" body="Was top 7% of all AMC 10 test takersPlaced top 3 in District competitions"/>
+    <Award title="UIL Mathematics, Number Sense and Calculator Applications Regional Qualifier (2024)" body="Was top 7% of all AMC 10 test takers"/>
     </div>
     <h2>Computer Science Awards</h2>
     <div class="container">
@@ -30,7 +28,7 @@ function Page() {
     <h2>Musical Awards</h2>
     <div class="container">
     <Award title="TSSEC Qualifier (2024)" body="Qualified to play at prestigious state solo competition"/>
-    <Award title="Region Orchestra Member (2021-2024)" body="Auditioned into All-Region orchestra"/>
+    <Award title="Region Orchestra Member (2021-2023)" body="Auditioned into All-Region orchestra"/>
     </div>
     </main>
   )
