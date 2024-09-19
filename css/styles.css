@@ -61,7 +61,7 @@ a + a {
   display: flex;
   flex-direction: row;
   justify-content: left;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 main {
   width: 100%;
