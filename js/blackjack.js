@@ -1,145 +1,110 @@
 let allCards=["2S","3S","4S","5S","6S","7S","8S","9S","10S","JS","QS","KS","AS","2H","3H","4H","5H","6H","7H","8H","9H","10H","JH","QH","KH","AH",
 "2D","3D","4D","5D","6D","7D","8D","9D","10D","JD","QD","KD","AD","2C","3C","4C","5C","6C","7C","8C","9C","10C","JC","QC","KC","AC"]
-let money=200
-let rounds=0;
-let sum=0;
-let cards=[...allCards]
-let playerCards=[]
-let dealerCards=[]
-let dealerScore=0
-let dealerAce=0
-let aces=0
-let betamt=10
-let newgame=false
-class Game {
-  deal() {
-    let c=getRandomInt(0,cards.length)
-    q("cards").innerHTML += cards[c]+" "
-    sum+=val(cards[c])
-    if (val(cards[c])==11) {
-      aces++
-    }
-    playerCards.push(cards[c])
-    cards.splice(c,1) 
-  
-    //LOGIC
-    while (aces>0&&sum>21){
-      aces--;
-      sum-=10;
-    }
-    if (sum>21){
-      q("roundinfo").innerHTML="Round "+rounds
-      q("info").innerHTML=("You drew a "+playerCards[playerCards.length-1]+". You lost!")
-      q("info2").innerHTML=""
-      q("info3").innerHTML=""
-      money-=betamt
-      this.reset()
-    }
-    this.update()
+class Hand {
+  constructor() {
+    this.cards=[]
+    this.score=0
+    this.aces=0
   }
-  dealerDeal() {
-    let c=getRandomInt(0,cards.length)
-    q("dealerCard").innerHTML += cards[c]+" "
-    dealerScore+=val(cards[c])
-    dealerCards.push(cards[c])
-    cards.splice(c,1) 
+  addCard(card) {
+    this.cards[this.cards.length]=card
+    let value = val(card)
+    if (value==11) {
+      this.aces++
+    }
+    this.score+=value
+    q("cards").innerHTML=this.cardsToStr(this.cards)
+    q("sum").innerHTML="Sum: "+this.score
+  }
+  check() {
+    if (this.score>21) {
 
-    c=getRandomInt(0,cards.length)
-    q("dealerCard").innerHTML += "? "
-    dealerCards.push(cards[c])
-    dealerScore+=val(cards[c])
-    cards.splice(c,1) 
+    } else if (this.score==21&&this.cards.length==2) {
+
+    }
   }
-  reset() {
-    if (money<=0) {
-      alert("You lost all your money! Here's a $200 bailout.")
-      money+=200
-    }
-    sum=0
-    q("cards").innerHTML="Cards: "
-    aces=0
-    dealerAce=0
-    playerCards=[]
-    dealerCards=[]
-    rounds++;
-    if (rounds%5==0||newgame) {
-      cards=[...allCards]
-    }
-    q("dealerCard").innerHTML = "Dealer's Cards: "
-    dealerScore=0
-    this.deal()
-    this.deal()
-    this.dealerDeal()
-    this.update()
-    if (sum==21&&dealerScore!=21) {
-      alert("Round "+rounds+": You got Blackjack! Your cards were "+playerCards+". Dealer's cards were "+dealerCards)
-      money+=1.5*betamt
-      this.reset()
-    }
-    if (dealerScore==21&&sum!=21) {
-      alert("Round "+rounds+": Dealer got Blackjack! Your cards were "+playerCards+". Their cards were "+dealerCards)
-      money-=betamt
-      this.reset()
-    }
-    if (dealerScore==21&&sum==21) {
-      alert("Round "+rounds+": You and the dealer both got Blackjack! Your cards were "+playerCards+". Their cards were "+dealerCards)
-      this.reset()
-    }
-    newgame=false
+  clear() {
+    this.cards=[]
+    this.score=0
+    this.aces=0
   }
-  stand() {
-    while (dealerScore<17) {
-      let c=getRandomInt(0,cards.length)
-      dealerScore+=val(cards[c])
-      dealerCards.push(cards[c])
-      if (val(cards[c])==11){
-        dealerAce++
-      }
-      cards.splice(c,1) 
-      while (dealerAce>0&&(dealerScore>21||dealerScore<sum||dealerScore==17)){
-        dealerAce--;
-        dealerScore-=10;
-      }
+  cardsToStr(cards) {
+    let str=""
+    for (let i=0; i<cards.length; i++) {
+      str+=cards[i]+' '
     }
-    q("roundinfo").innerHTML="Round "+rounds
-    q("info").innerHTML=("Dealer's Cards: "+dealerCards)
-    q("info2").innerHTML=("Dealer's Score: "+dealerScore)
-    if (dealerScore>21) {
-      q("info3").innerHTML="You Won!"
-      money+=betamt
-    } else {
-      if (dealerScore>sum){
-        q("info3").innerHTML="You Lost!"
-        money-=betamt
-      }
-      if (dealerScore<sum){
-        q("info3").innerHTML="You Won!"
-        money+=betamt
-      }
-      if (dealerScore==sum){
-        q("info3").innerHTML="Draw"
-      }
-    }
-    this.update()
-    this.reset()
-  }
-  update() {
-    q("money").innerHTML="Money: $"+money
-    q("sum").innerHTML = "Sum: "+sum
-    q("rounds").innerHTML = "Round "+rounds
-  }
-  betamt() {
-    betamt=prompt("Enter Bet Amount")
-    while (betamt<0) {
-      betamt=prompt("Please enter a nonnegative bet amount.")
-    }
+    return "Cards: "+str
   }
 }
+class dealerHand extends Hand {
+  addCard(card, phase) {
+    this.cards[this.cards.length]=card
+    let value = val(card)
+    if (value==11) {
+      this.aces++
+    }
+    this.score+=value
+    q("dealerCard").innerHTML=this.cardsToStr(this.cards, phase)
+  }
+  cardsToStr(cards, phase) {
+    //if phase is true, hide 2nd card
+    let str=""
+    for (let i=0; i<cards.length; i++) {
+      if (phase&&i==1) {
+        str+='?? '
+      } else {
+        str+=cards[i]+' '
+      }
+    }
+    return "Dealer's cards: "+str
+  }
+}
+class Game {
+  constructor() {
+    this.money=200
+    this.cards=[...allCards]
+    this.amt=10
+  }
+  getRandomCard() {
+    let a=getRandomInt(0,this.cards.length)
+    let c = this.cards[a]
+    this.cards.splice(a, 1);
+    console.log(c)
+    return c
+  }
+  firstDeal() {
+    this.hit()
+    this.hit()
+    this.dealerDraw(true)
+    this.dealerDraw(true)
+  }
+  hit() {
+    player.addCard(this.getRandomCard())  
+  }
+  dealerDraw(phase) {
+    dealer.addCard(this.getRandomCard(), phase)  
+  }
+  stand() {
+    while (dealer.score<17) {
+      this.dealerDraw(false)
+    } 
+    if (dealer.score>21) {
+      q("info3").innerHTML="Win"
+    } else {
+      q("info3").innerHTML="Lose"
+    }
+    q("info").innerHTML=dealer.cardsToStr(dealer.cards, false)
+    q("info2").innerHTML="Dealer's Score: "+dealer.score
+  }
+  newGame() {
+
+  }
+} 
 function start() {
   game=new Game()
-  newgame=true
-  game.reset()
-  rounds=0
+  player=new Hand()
+  dealer=new dealerHand()
+  game.firstDeal()
 }
 function getRandomInt(min, max) {
   const minCeiled = Math.ceil(min);
