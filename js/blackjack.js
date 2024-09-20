@@ -13,6 +13,10 @@ class Hand {
       this.aces++
     }
     this.score+=value
+    if (this.score>21&&this.aces>0) {
+      this.aces--
+      this.score-=10
+    }
     q("cards").innerHTML=this.cardsToStr(this.cards)
     q("sum").innerHTML="Sum: "+this.score
   }
@@ -90,14 +94,23 @@ class Game {
     } 
     if (dealer.score>21) {
       q("info3").innerHTML="Win"
+    } else if (dealer.score==player.score) {
+      q("info3").innerHTML="Draw"
+    } else if (dealer.score<player.score) {
+      q("info3").innerHTML="Win"
     } else {
       q("info3").innerHTML="Lose"
     }
     q("info").innerHTML=dealer.cardsToStr(dealer.cards, false)
     q("info2").innerHTML="Dealer's Score: "+dealer.score
+    this.newGame()
   }
   newGame() {
-
+    dealer.cards=[]
+    player.cards=[]
+    dealer.score=0
+    player.score=0
+    this.firstDeal() 
   }
 } 
 function start() {
