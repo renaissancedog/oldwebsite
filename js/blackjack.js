@@ -19,12 +19,14 @@ class Hand {
     }
     q("cards").innerHTML=this.cardsToStr(this.cards)
     q("sum").innerHTML="Sum: "+this.score
+    this.check()
   }
   check() {
     if (this.score>21) {
-
+      game.checkWin(true)
     } else if (this.score==21&&this.cards.length==2) {
-
+      alert("Blackjack") 
+      game.checkWin(false)
     }
   }
   clear() {
@@ -73,14 +75,13 @@ class Game {
     let a=getRandomInt(0,this.cards.length)
     let c = this.cards[a]
     this.cards.splice(a, 1);
-    console.log(c)
     return c
   }
   firstDeal() {
-    this.hit()
-    this.hit()
     this.dealerDraw(true)
     this.dealerDraw(true)
+    this.hit()
+    this.hit()
   }
   hit() {
     player.addCard(this.getRandomCard())  
@@ -92,14 +93,21 @@ class Game {
     while (dealer.score<17) {
       this.dealerDraw(false)
     } 
-    if (dealer.score>21) {
-      q("info3").innerHTML="Win"
-    } else if (dealer.score==player.score) {
-      q("info3").innerHTML="Draw"
-    } else if (dealer.score<player.score) {
-      q("info3").innerHTML="Win"
-    } else {
+    this.checkWin(false)  
+  }
+  checkWin(over21) {
+    if (over21) {
       q("info3").innerHTML="Lose"
+    } else {
+      if (dealer.score>21) {
+        q("info3").innerHTML="Win"
+      } else if (dealer.score==player.score) {
+        q("info3").innerHTML="Draw"
+      } else if (dealer.score<player.score) {
+        q("info3").innerHTML="Win"
+      } else {
+        q("info3").innerHTML="Lose"
+      }
     }
     q("info").innerHTML=dealer.cardsToStr(dealer.cards, false)
     q("info2").innerHTML="Dealer's Score: "+dealer.score
@@ -107,9 +115,12 @@ class Game {
   }
   newGame() {
     dealer.cards=[]
+    q("dealerCard").innerHTML="Dealer's Cards: "
     player.cards=[]
+    q("cards").innerHTML="Cards: "
     dealer.score=0
     player.score=0
+    q("sum").innerHTML=""
     this.firstDeal() 
   }
 } 
@@ -117,7 +128,7 @@ function start() {
   game=new Game()
   player=new Hand()
   dealer=new dealerHand()
-  game.firstDeal()
+  game.newGame()
 }
 function getRandomInt(min, max) {
   const minCeiled = Math.ceil(min);
