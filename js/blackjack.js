@@ -26,7 +26,7 @@ class Hand {
       game.checkWin(true)
     } else if (this.score==21&&this.cards.length==2) {
       alert("Blackjack") 
-      game.checkWin(false)
+      game.checkWin(false, true)
     }
   }
   clear() {
@@ -70,6 +70,7 @@ class Game {
     this.money=200
     this.cards=[...allCards]
     this.amt=10
+    this.rounds=0
   }
   getRandomCard() {
     let a=getRandomInt(0,this.cards.length)
@@ -78,6 +79,8 @@ class Game {
     return c
   }
   firstDeal() {
+    this.rounds++
+    q("rounds").innerHTML="Round "+this.rounds
     this.dealerDraw(true)
     this.dealerDraw(true)
     this.hit()
@@ -98,29 +101,57 @@ class Game {
   checkWin(over21) {
     if (over21) {
       q("info3").innerHTML="Lose"
+      this.money-=this.amt
     } else {
       if (dealer.score>21) {
         q("info3").innerHTML="Win"
+        this.money+=this.amt
       } else if (dealer.score==player.score) {
         q("info3").innerHTML="Draw"
       } else if (dealer.score<player.score) {
         q("info3").innerHTML="Win"
+        this.money+=this.amt
       } else {
         q("info3").innerHTML="Lose"
+        this.money-=this.amt
       }
     }
     q("info").innerHTML=dealer.cardsToStr(dealer.cards, false)
     q("info2").innerHTML="Dealer's Score: "+dealer.score
+    q("money").innerHTML="Money: $"+this.money
+    q("roundinfo").innerHTML="Round "+this.rounds
+    this.newGame()
+  }
+  blackjack() {
+    if (dealer.score==21) {
+      q("info3").innerHTML="Draw"
+    } else {
+      q("info3").innerHTML="Win"
+      this.money+=1.5*this.amt
+    }
+    q("info").innerHTML=dealer.cardsToStr(dealer.cards, false)
+    q("info2").innerHTML="Dealer's Score: "+dealer.score
+    q("money").innerHTML="Money: $"+this.money
+    q("roundinfo").innerHTML="Round "+this.rounds
     this.newGame()
   }
   newGame() {
+    if (game.rounds%5==0) {
+      this.cards=[...allCards]
+    }
     dealer.cards=[]
     q("dealerCard").innerHTML="Dealer's Cards: "
     player.cards=[]
     q("cards").innerHTML="Cards: "
     dealer.score=0
     player.score=0
+    player.aces=0
     q("sum").innerHTML=""
+    if (this.money<=0) {
+      alert("You went bankrupt! Here's a $200 bailout.")
+      this.money+=200
+      q("money").innerHTML="Money: $"+this.money
+    }
     this.firstDeal() 
   }
 } 
@@ -128,6 +159,8 @@ function start() {
   game=new Game()
   player=new Hand()
   dealer=new dealerHand()
+  game.money=200
+  q("money").innerHTML="Money: $"+game.money
   game.newGame()
 }
 function getRandomInt(min, max) {
