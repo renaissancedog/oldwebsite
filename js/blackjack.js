@@ -39,7 +39,7 @@ class Hand {
     for (let i=0; i<cards.length; i++) {
       str+=cards[i]+' '
     }
-    return "Cards: "+str
+    return "Player's cards: "+str
   }
 }
 class dealerHand extends Hand {
@@ -117,6 +117,7 @@ class Game {
       }
     }
     q("info").innerHTML=dealer.cardsToStr(dealer.cards, false)
+    q("playerCards").innerHTML=player.cardsToStr(player.cards)
     q("info2").innerHTML="Dealer's Score: "+dealer.score
     q("money").innerHTML="Money: $"+this.money
     q("roundinfo").innerHTML="Round "+this.rounds
