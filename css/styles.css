@@ -68,8 +68,9 @@ main {
   margin: 0 auto;
 }
 #intro {
-  font-size: 100px;
+  font-size: 50px;
   text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 h1 {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 

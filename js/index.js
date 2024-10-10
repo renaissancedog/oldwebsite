@@ -1,7 +1,7 @@
 function Page() {
   return (
     <main>
-      <h1 id="intro">Hello, World!</h1>
+      <h1 id="intro">Hello World!</h1>
       <h2>About Me</h2> 
       <div class="container">
         <div class="row">
